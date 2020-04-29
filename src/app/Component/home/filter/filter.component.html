@@ -1,0 +1,47 @@
+<div class="row p-3 rounded bg-content">
+  <div class="col-12 p-0">
+    <h5 class="mb-3">filter by:</h5>
+    <div class="row">
+      <div class="col-12">
+        <h6 class="mb-2 font-10">course duration</h6>
+        <label
+          class="d-block font-10"
+          *ngFor="let duration of durationFilter; let i = index"
+        >
+          <input
+            type="checkbox"
+            (change)="checkDuration($event.target.checked, i)"
+          />
+          {{ duration }}
+        </label>
+      </div>
+    </div>
+
+    <hr class="line" />
+    <div class="row mb-2 mt-2">
+      <div class="col-12">
+        <h6 class="mb-2 font-10">all categories</h6>
+        <label class="d-block font-10" *ngFor="let category of categoryFilter">
+          <input type="checkbox" />
+          {{ category }}
+        </label>
+      </div>
+    </div>
+    <hr class="line" />
+
+    <div class="row">
+      <div class="col-12">
+        <h6
+          title="The difficulty level of the course"
+          class="mb-2 font-10 trim"
+        >
+          The difficulty level of the course
+        </h6>
+        <label class="d-block font-10" *ngFor="let level of levelFilter">
+          <input type="checkbox" />
+          {{ level }}
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

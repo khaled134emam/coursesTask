@@ -1,0 +1,110 @@
+<div class="row">
+  <div class="col-12">
+    <div class="row mb-2">
+      <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 p-0">
+        <h5 class="pb-2 mb-1 title-active pl-2">
+          all courses
+        </h5>
+      </div>
+
+      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 p-0">
+        <input
+          placeholder="serch by course name "
+          [(ngModel)]="searchKey"
+          (keyup)="searchByName()"
+          type="text"
+          class="form-control float-right custome-input"
+        />
+      </div>
+    </div>
+
+    <div *ngIf="searchKey == ''" class="row">
+      <div
+        class="col-md-4 col-lg-4 col-sm-4 col-xs-12 p-1"
+        *ngFor="let course of coureseList"
+      >
+        <div class="card">
+          <img
+            [src]="course.CourseImg"
+            class="card-img-top h-130px"
+            alt="..."
+          />
+          <div class="card-body p-2 bg-content">
+            <h6 class="card-title mb-0 font-10">{{ course.CourseName }}</h6>
+            <div class="card-text">
+              <div class="d-flex justify-content-between flex-row mb-2">
+                <div class="flex-fill text-left">
+                  <label class="d-inline-block mb-0 font-9">{{
+                    course.courseLevel
+                  }}</label>
+                </div>
+                <div class="flex-fill text-left">
+                  <label class="d-inline-block mb-0 font-9">
+                    <i
+                      [class]="
+                        (course.AvailableSeats < 10
+                          ? ' text-danger'
+                          : ' text-success-available') + ' fa fa-users'
+                      "
+                    ></i>
+                    {{ course.AvailableSeats }}</label
+                  >
+                </div>
+                <div class="flex-fill text-left">
+                  <label class="d-inline-block mb-0 font-9">
+                    {{ course.CourseCategory }}</label
+                  >
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between flex-row mb-1">
+                <div class="flex-fill text-left">
+                  <label class="d-inline-block mb-0 font-9"
+                    >duration : {{ course.CourseDuration }} H
+                  </label>
+                </div>
+                <div class="flex-fill pl-2 text-left">
+                  <label class="d-inline-block mb-0 font-9">
+                    ${{ course.CoursePrice }}</label
+                  >
+                </div>
+                <div class="flex-fill pl-1 text-left">
+                  <a
+                    href="#"
+                    class="d-inline-block bg-white active font-8 radius-10 pt-1 pb-1 pl-2 pr-2 font-weight-bold"
+                    >add to cart</a
+                  >
+                </div>
+              </div>
+              <!-- <span class="d-block">{{ course.CourseId }}</span> -->
+              <!-- <span class="d-block">{{ course.CourseCategory }}</span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="searchKey != ''" class="row">
+      <div *ngFor="let course of searchList" class="col-4">
+        <div class="card border border-primary bg-danger p-2">
+          <span class="d-block">{{ course.CourseId }}</span>
+          <span class="d-block">{{ course.CourseName }}</span>
+          <span class="d-block">{{ course.CoursePrice }}</span>
+          <span class="d-block">{{ course.AvailableSeats }}</span>
+          <span class="d-block"
+            ><img style="width: 60px;" [src]="course.CourseImg"
+          /></span>
+          <span class="d-block">{{ course.courseLevel }}</span>
+          <span class="d-block">{{ course.CourseDuration }}</span>
+          <span class="d-block">{{ course.CourseCategory }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="searchKey != '' && searchList.length == 0" class="row">
+      <div class="col-12">
+        <h5>no Course found</h5>
+      </div>
+    </div>
+  </div>
+</div>

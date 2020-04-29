@@ -1,0 +1,115 @@
+/* You can add global styles to this file, and also import other style files */
+/*main colors*/
+$mainbackground: #121212;
+$headerbacground: #1e1e1e;
+$contentbackground: #181818;
+$grayheader: #514f4dd4;
+$grayheadertrans: #514d4d9e;
+$bordertrans: #6e6b6a;
+$activelink: #54b053;
+html,
+body {
+  height: 100%; /* needed for proper layout */
+  text-transform: capitalize;
+  // font-family: "Montserrat", sans-serif !important;
+  overflow-x: hidden;
+  color: #fff;
+
+  background-color: $mainbackground;
+}
+.bg-header {
+  background-color: $headerbacground;
+}
+
+.bg-content {
+  background-color: $contentbackground;
+}
+
+.bg-grayheader {
+  background-color: $grayheader;
+}
+
+.bg-grayheader-trans {
+  background-color: $grayheadertrans !important;
+}
+
+.border-gray-trans {
+  border-color: $bordertrans !important;
+}
+.border-gray {
+  border-color: $grayheader !important;
+}
+.active {
+  color: $activelink !important;
+}
+.text-success-available {
+  color: #55b053 !important;
+}
+.border-bottom-active {
+  border-bottom-color: $activelink !important;
+}
+.h-140px {
+  height: 140px;
+}
+
+.font-10 {
+  font-size: 10pt;
+}
+.font-9 {
+  font-size: 9pt;
+}
+.font-8 {
+  font-size: 8pt;
+}
+
+.title-active {
+  &::after {
+    content: "";
+    border-bottom: 3px solid $activelink;
+    width: 100px;
+    display: block;
+    margin-top: 15px;
+  }
+}
+
+.navbar-light {
+  .navbar-toggler {
+    background-color: $activelink;
+  }
+}
+
+@media (max-width: 415px) {
+  .font-10 {
+    font-size: 7.5pt;
+    white-space: nowrap;
+  }
+  .font-9 {
+    font-size: 6.8pt;
+    white-space: nowrap;
+  }
+  .font-8 {
+    font-size: 6.5pt;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 987px) {
+  .fake-border {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1030px) {
+  .font-10 {
+    font-size: 9pt;
+    white-space: nowrap;
+  }
+  .font-9 {
+    font-size: 7pt;
+    white-space: nowrap;
+  }
+  .font-8 {
+    font-size: 5pt;
+    white-space: nowrap;
+  }
+}
