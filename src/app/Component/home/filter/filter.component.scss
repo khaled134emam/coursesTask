@@ -6,3 +6,68 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
+$black: #181818;
+$lightgray: #9c9e9f;
+$gray: #bdc1c6;
+$white: #fff;
+$green: #17c178;
+
+input[type="checkbox"] {
+  position: relative;
+  width: 1.2em;
+  height: 1.2em;
+  color: $black;
+  border: 1px solid $gray;
+  border-radius: 2px;
+  appearance: none;
+  outline: 0;
+  cursor: pointer;
+  &::before {
+    position: absolute;
+    content: "";
+    position: absolute;
+    content: "";
+    display: block;
+    top: 2px;
+    left: 5px;
+    width: 5px;
+    height: 10px;
+    border-style: solid;
+    border-color: $black;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+  }
+  &:checked {
+    color: $white;
+    border-color: $green;
+    background: $green;
+    &::before {
+      opacity: 1;
+    }
+    ~ label::before {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+}
+
+label {
+  position: relative;
+  cursor: pointer;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  &::before {
+    position: absolute;
+    content: attr(data-content);
+    color: $lightgray;
+    clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;
+    text-decoration-color: $black;
+    transition: clip-path 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+}

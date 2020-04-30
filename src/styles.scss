@@ -91,11 +91,28 @@ body {
     font-size: 6.5pt;
     white-space: nowrap;
   }
+
+  .xs-screen {
+    white-space: normal;
+  }
+
+  input[type="checkbox"]::before {
+    top: 0px !important;
+
+    left: 3px !important;
+
+    width: 4px !important;
+
+    height: 9px !important;
+  }
 }
 
 @media (max-width: 987px) {
   .fake-border {
     display: none;
+  }
+  .profile-ddl {
+    transform: translateX(0%) !important;
   }
 }
 
@@ -111,5 +128,10 @@ body {
   .font-8 {
     font-size: 5pt;
     white-space: nowrap;
+  }
+
+  .mbsc-ios.mbsc-ev-cal.mbsc-fr-inline .mbsc-cal-hdr {
+    width: 85%;
+    text-align: center;
   }
 }

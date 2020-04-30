@@ -12,7 +12,9 @@ import { RecentUpdatesListComponent } from './Component/home/recent-updates-list
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { FormsModule } from '@angular/forms';
-import { HZDatePickerModule } from 'ng2-hz-datepicker';
+import { MbscModule } from '../lib/mobiscroll/js/mobiscroll.angular.min';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { HZDatePickerModule } from 'ng2-hz-datepicker';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    // HZDatePickerModule.forRoot(),
+    MbscModule,
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
   ],
   providers: [
     {

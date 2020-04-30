@@ -1,7 +1,12 @@
-<!-- <h1>
-  {{ title }}
-</h1>
-<hz-date-picker
-  (onDateChange)="myDateChangeHandler($event)"
-  [dpConfig]="myDatePickerConfig"
-></hz-date-picker> -->
+<h6 class="font-10">todo list</h6>
+
+<div class="row">
+  <div class="col-12 h-100 overflow-auto">
+    <mbsc-page theme="ios" themeVariant="dark" lang="en">
+      <mbsc-eventcalendar
+        [data]="events"
+        [options]="eventSettings"
+      ></mbsc-eventcalendar>
+    </mbsc-page>
+  </div>
+</div>

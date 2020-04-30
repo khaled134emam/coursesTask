@@ -1,0 +1,35 @@
+@import "../../../../lib/mobiscroll/css/mobiscroll.angular.min.css";
+.mbsc-ios-dark .mbsc-fr-btn {
+  color: #17c178;
+}
+
+.mbsc-ios-dark
+  .mbsc-cal-c
+  .mbsc-cal
+  .mbsc-cal-body
+  .mbsc-cal-row
+  .mbsc-selected
+  .mbsc-cal-cell-txt {
+  border-color: #17c178;
+  background: #17c178;
+}
+
+.mbsc-event-color {
+  background: #464545 !important;
+}
+.mbsc-ios-dark .mbsc-cal-cell:focus .mbsc-cal-cell-txt,
+.mbsc-ios-dark.mbsc-no-touch:not(.mbsc-ev-cal)
+  .mbsc-cal-cell:not(.mbsc-disabled):hover
+  .mbsc-cal-cell-txt,
+.mbsc-ios-dark.mbsc-no-touch
+  .mbsc-cal-day:not(.mbsc-disabled)
+  .mbsc-cal-day-date:hover {
+  background: rgba(23, 193, 120, 0.58);
+}
+.mbsc-ios-dark .mbsc-cal-today {
+  color: #17c178;
+}
+
+.mbsc-event-txt {
+  line-height: 2.142857;
+}

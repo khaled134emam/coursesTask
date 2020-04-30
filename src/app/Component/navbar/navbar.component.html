@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-header text-white">
-  <a class="navbar-brand text-white" href="#">
-    <img src="assets/imgs/Logo.png" />
+  <a class="navbar-brand text-white">
+    <img title="learning curve" src="assets/imgs/Logo.png" />
   </a>
   <button
     class="navbar-toggler"
@@ -16,7 +16,7 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link active" href="#"
+        <a class="nav-link active"
           >Home <span class="sr-only">(current)</span></a
         >
       </li>
@@ -26,11 +26,58 @@
         ></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-secondary" href="#">student requeted corsues</a>
+        <a class="nav-link text-secondary">student requeted corsues</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-secondary" href="#">profile</a>
+        <a class="nav-link text-secondary fake-border"
+          ><span class="border-secondary border-right"></span
+        ></a>
+      </li>
+
+      <li class="nav-item pl-2 pr-2">
+        <div class="btn-group" dropdown>
+          <a
+            dropdownToggle
+            class="dropdown-toggle"
+            aria-controls="dropdown-basic"
+          >
+            <img alt="profile" src="assets/imgs/profile.png" />
+          </a>
+          <ul
+            id="dropdown-basic"
+            *dropdownMenu
+            class="dropdown-menu profile-ddl"
+            role="menu"
+          >
+            <li role="menuitem">
+              <a class="dropdown-item">my profile</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-secondary fake-border"
+          ><span class="border-secondary border-right"></span
+        ></a>
       </li>
     </ul>
   </div>
 </nav>
+
+<div class="row bg-img h-140px">
+  <div class="col-12 p-0 d-flex flex-row align-items-center h-100">
+    <div class="info pr-3">
+      <h6
+        class="text-right font-10 text-white mb-1 pt-1 pb-1 text-uppercase pl-4 pr-3 border bg-grayheader border-gray rounded-15"
+      >
+        learn online
+      </h6>
+      <p
+        class="text-right xs-screen font-9 mb-0 text-white pt-1 pb-1 pl-4 pr-3 border bg-grayheader-trans border-gray-trans rounded-15"
+      >
+        Study any topic, anytime. Explore thousands of courses starting at
+        $11.99 each
+      </p>
+    </div>
+  </div>
+</div>
