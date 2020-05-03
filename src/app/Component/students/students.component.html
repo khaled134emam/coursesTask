@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-lg-9 col-sm-12 col-xs-12 pl-3 pr-3">
+    <div class="row mb-2">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+        <h5 class="pb-2 mb-1 title-active pl-2">
+          students requested
+        </h5>
+      </div>
+    </div>
+    <div class="row" *ngIf="!loading">
+      <div
+        class="col-md-4 col-lg-4 col-sm-4 col-xs-12 p-1"
+        *ngFor="let student of studentList"
+      >
+        <div class="card">
+          <div class="card-body p-2 bg-content">
+            <h6 class="card-title mb-0 font-10">{{ student.Id }}</h6>
+            <div class="card-text">
+              <div class="d-flex justify-content-between flex-column mb-2">
+                <div class="flex-fill text-left">
+                  <label class="d-inline-block mb-0 font-9">{{
+                    student.Name
+                  }}</label>
+                </div>
+                <div class="flex-fill text-left">
+                  <label class="d-inline-block mb-0 font-9">
+                    {{ student.Email }}</label
+                  >
+                </div>
+
+                <div class="flex-fill text-left">
+                  <label class="d-inline-block mb-0 font-9">
+                    courses number: {{ getStudentCoursesNumber(student.Id) }}
+                  </label>
+                </div>
+                <!-- <div class="flex-fill text-left">
+              <label class="d-inline-block mb-0 font-9">
+                {{ getstudentId(student.Id) }}</label
+              >
+            </div> -->
+              </div>
+
+              <div class="d-flex justify-content-between flex-row mb-1">
+                <!-- <div class="flex-fill text-left">
+              <label class="d-inline-block mb-0 font-9">
+                {{ student.PaymentType }}
+              </label>
+            </div> -->
+                <div class="flex-fill pl-2 text-left">
+                  <!-- <label class="d-inline-block mb-0 font-9">
+                {{ student.RegisterDate }}</label
+              > -->
+                </div>
+                <div class="flex-fill pl-1 text-right">
+                  <a
+                    routerLink="/profile/{{ student.Id }}"
+                    class="d-inline-block bg-white active add-cart font-8 radius-10 pt-1 pb-1 pl-2 pr-2 font-weight-bold"
+                    >show profile</a
+                  >
+                </div>
+              </div>
+              <!-- <span class="d-block">{{ student.studentId }}</span> -->
+              <!-- <span class="d-block">{{ student.studentCategory }}</span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span *ngIf="loading">Loading....</span>
+  </div>
+  <div class="col-lg-3 col-sm-12 col-xs-12 pl-3 pr-3">
+    <div class="row bg-content">
+      <div class="col-12 pt-2 pl-2">
+        <!-- Start todo list with events -->
+        <app-todo-list></app-todo-list>
+        <!-- End todo list with events -->
+      </div>
+    </div>
+
+    <div class="row bg-content mt-2">
+      <div class="col-12 pt-2 pl-2">
+        <!-- Start recent  updates list   -->
+        <app-recent-updates-list></app-recent-updates-list>
+        <!-- End recent  updates list   -->
+      </div>
+    </div>
+  </div>
+</div>

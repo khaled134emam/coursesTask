@@ -3,11 +3,16 @@
 
   border: 1px solid #a7a4a3;
 }
-
+.card-img-top {
+  cursor: pointer;
+}
 .h-130px {
   height: 130px;
 }
-
+.w-500px {
+  width: 500px;
+  max-width: 500px;
+}
 .radius-10 {
   border-radius: 10px;
 }

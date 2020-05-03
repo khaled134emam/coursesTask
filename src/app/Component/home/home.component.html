@@ -6,7 +6,15 @@
   </div>
   <div class="col-lg-7 col-sm-12 col-xs-12 pl-3 pr-3">
     <!-- Start  courses list with search  -->
-    <app-courses-list></app-courses-list>
+    <app-courses-list  
+      *ngIf="courseList.length > 0"
+      [isCardEnabled]="true"
+      [tilte]="' all courses '"
+      [courseList]="courseList"
+    ></app-courses-list>
+    
+    <span *ngIf="loading">Loading....</span>
+
     <!-- End  courses list with search  -->
   </div>
 

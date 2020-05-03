@@ -3,13 +3,13 @@
     <div class="row mb-2">
       <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 p-0">
         <h5 class="pb-2 mb-1 title-active pl-2">
-          all courses
+          {{ tilte }}
         </h5>
       </div>
 
       <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 p-0">
         <!-- Start Search input for courses by name -->
-        <div class="hold-input position-relative">
+        <div *ngIf="isSearchEnabled" class="hold-input position-relative">
           <i class="fa fa-search fa-lg search-icon" aria-hidden="true"></i>
           <input
             placeholder="Search By course name "
@@ -22,85 +22,19 @@
         <!-- End  Search input for courses by name -->
       </div>
     </div>
-    <!-- Start list of all courses -->
-    <div *ngIf="searchKey == ''" class="row">
-      <div
-        class="col-md-4 col-lg-4 col-sm-4 col-xs-12 p-1"
-        *ngFor="let course of coureseList"
-      >
-        <div class="card">
-          <img
-            [src]="course.CourseImg"
-            class="card-img-top h-130px"
-            alt="..."
-          />
-          <div class="card-body p-2 bg-content">
-            <h6 class="card-title mb-0 font-10">{{ course.CourseName }}</h6>
-            <div class="card-text">
-              <div class="d-flex justify-content-between flex-row mb-2">
-                <div class="flex-fill text-left">
-                  <label class="d-inline-block mb-0 font-9">{{
-                    course.courseLevel
-                  }}</label>
-                </div>
-                <div class="flex-fill text-left">
-                  <label class="d-inline-block mb-0 font-9">
-                    <i
-                      [class]="
-                        (course.AvailableSeats < 10
-                          ? ' text-danger'
-                          : ' text-success-available') + ' fa fa-users'
-                      "
-                    ></i>
-                    {{ course.AvailableSeats }}</label
-                  >
-                </div>
-                <div class="flex-fill text-left">
-                  <label class="d-inline-block mb-0 font-9">
-                    {{ course.CourseCategory }}</label
-                  >
-                </div>
-              </div>
-
-              <div class="d-flex justify-content-between flex-row mb-1">
-                <div class="flex-fill text-left">
-                  <label class="d-inline-block mb-0 font-9"
-                    >duration : {{ course.CourseDuration }} H
-                  </label>
-                </div>
-                <div class="flex-fill pl-2 text-left">
-                  <label class="d-inline-block mb-0 font-9">
-                    {{ course.CoursePrice | currency }}</label
-                  >
-                </div>
-                <div class="flex-fill pl-1 text-left">
-                  <a
-                    href="#"
-                    class="d-inline-block bg-white active font-8 radius-10 pt-1 pb-1 pl-2 pr-2 font-weight-bold"
-                    >add to cart</a
-                  >
-                </div>
-              </div>
-              <!-- <span class="d-block">{{ course.CourseId }}</span> -->
-              <!-- <span class="d-block">{{ course.CourseCategory }}</span> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End list of all courses -->
 
     <!-- Start the result of courses that user searched for   -->
-    <div *ngIf="searchKey != ''" class="row">
+    <div *ngIf="searchList.length > 0" class="row">
       <div
         *ngFor="let course of searchList"
         class="col-md-4 col-lg-4 col-sm-4 col-xs-12 p-1"
       >
         <div class="card">
           <img
+            (click)="openCourseDetails(course.CourseId)"
             [src]="course.CourseImg"
             class="card-img-top h-130px"
-            alt="..."
+            alt="course details"
           />
           <div class="card-body p-2 bg-content">
             <h6 class="card-title mb-0 font-10">{{ course.CourseName }}</h6>
@@ -112,7 +46,12 @@
                   }}</label>
                 </div>
                 <div class="flex-fill text-left">
-                  <label class="d-inline-block mb-0 font-9">
+                  <label
+                    [class]="
+                      (course.AvailableSeats <= 0 ? ' hide' : ' ') +
+                      ' d-inline-block mb-0 font-9'
+                    "
+                  >
                     <i
                       [class]="
                         (course.AvailableSeats < 10
@@ -121,6 +60,16 @@
                       "
                     ></i>
                     {{ course.AvailableSeats }}</label
+                  >
+
+                  <label
+                    [class]="
+                      course.AvailableSeats <= 0
+                        ? ' d-inline-block text-danger mb-0 font-9 '
+                        : '  hide'
+                    "
+                  >
+                    course completed</label
                   >
                 </div>
                 <div class="flex-fill text-left">
@@ -143,8 +92,12 @@
                 </div>
                 <div class="flex-fill pl-1 text-left">
                   <a
-                    href="#"
-                    class="d-inline-block bg-white active font-8 radius-10 pt-1 pb-1 pl-2 pr-2 font-weight-bold"
+                    *ngIf="isCardEnabled"
+                    (click)="addCourseToCard(course.CourseId)"
+                    [class]="
+                      (course.AvailableSeats <= 0 ? ' hide ' : ' ') +
+                      ' d-inline-block bg-white active add-cart font-8 radius-10 pt-1 pb-1 pl-2 pr-2 font-weight-bold'
+                    "
                     >add to cart</a
                   >
                 </div>
@@ -159,7 +112,7 @@
     <!-- End the result of courses that user searched for   -->
 
     <!-- Start the message when no course dound -->
-    <div *ngIf="searchKey != '' && searchList.length == 0" class="row">
+    <div *ngIf="searchList.length == 0" class="row">
       <div class="col-12 text-center">
         <h5>no Course found</h5>
       </div>

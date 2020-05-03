@@ -11,9 +11,16 @@
         >
           <input
             type="checkbox"
-            (change)="checkDuration($event.target.checked, i)"
+            (change)="
+              checkDuration(
+                $event.target.checked,
+                duration.minValue,
+                duration.maxValue,
+                i
+              )
+            "
           />
-          {{ duration }}
+          {{ duration.filterTemplate }}
         </label>
       </div>
     </div>
@@ -23,8 +30,14 @@
     <div class="row mb-2 mt-2">
       <div class="col-12">
         <h6 class="mb-2 font-10">all categories</h6>
-        <label class="d-block font-10" *ngFor="let category of categoryFilter">
-          <input type="checkbox" />
+        <label
+          class="d-block font-10"
+          *ngFor="let category of categoryFilter; let i = index"
+        >
+          <input
+            type="checkbox"
+            (change)="checkCategory($event.target.checked, category, i)"
+          />
           {{ category }}
         </label>
       </div>
@@ -41,8 +54,14 @@
         >
           The difficulty level of the course
         </h6>
-        <label class="d-block font-10" *ngFor="let level of levelFilter">
-          <input type="checkbox" />
+        <label
+          class="d-block font-10"
+          *ngFor="let level of levelFilter; let i = index"
+        >
+          <input
+            type="checkbox"
+            (change)="checkLevel($event.target.checked, level, i)"
+          />
           {{ level }}
         </label>
       </div>

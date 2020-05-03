@@ -1,8 +1,10 @@
-export enum durationFilterEnum {
-  Less2Hours = 0,
-  From2To10 = 1,
-  More10Hours = 2,
+export class durationFilter {
+  minValue: number;
+  maxValue: number;
+  filterKey: number;
 }
 
-export enum categoryFilterEnum {}
-export enum levelFilterEnum {}
+export class CategoryLevelFilter {
+  filterKey: number;
+  value: string;
+}
